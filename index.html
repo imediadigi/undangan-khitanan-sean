@@ -7,8 +7,9 @@
 
   <!-- Pratinjau Kartu Tautan (Open Graph) -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Walimatul Khitan Sean A. Bhretyadika Pratama" />
   <meta property="og:title" content="Undangan Walimatul Khitan — SEAN A. BHRETYADIKA PRATAMA" />
-  <meta property="og:description" content="Minggu, 06 Desember 2026 • Pukul 09.00 WIB – Selesai • Kp. Cikarag RT 03 / RW 06, Desa Mekarsari, Kec. Cibatu, Kab. Garut." />
+  <meta property="og:description" content="Minggu, 06 Desember 2026 • Dangdut (09.00–15.00), Pencak Silat (16.00–21.00), Pengajian (21.00–Selesai) • Kp. Cikarag RT 03 / RW 06, Desa Mekarsari, Kec. Cibatu, Kab. Garut." />
   <meta property="og:image" content="https://lh3.googleusercontent.com/d/1-p-8-qiKyQf973rkbmOlTM12H27Rp39F=w1200" />
   <meta property="og:image:secure_url" content="https://lh3.googleusercontent.com/d/1-p-8-qiKyQf973rkbmOlTM12H27Rp39F=w1200" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -114,8 +115,12 @@
       if (metaEl) metaEl.content = "1;url=" + finalUrl;
 
       window.setTimeout(function () {
-        window.location.replace(finalUrl);
+        window.location.replace(targetUrlFallback(finalUrl));
       }, 350);
+
+      function targetUrlFallback(url) {
+        return url;
+      }
     })();
   </script>
 </body>
