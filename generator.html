@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generator Nama Tamu — Walimatul Khitan Sean</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-ivory: #fbf7ee;
+      --bg-card: #fffdf9;
+      --bg-batik: #f5ede0;
+      --emerald-deep: #0d3a2d;
+      --emerald-mid: #175240;
+      --gold: #c59b38;
+      --gold-bright: #e7c873;
+      --gold-line: #dec382;
+      --ink: #1d2622;
+      --muted: #525e58;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #175240, #0a2c22);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 540px;
+      background: var(--bg-card);
+      border: 2px solid var(--gold);
+      border-radius: 26px;
+      padding: 28px 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .kicker {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 11.5px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 6px 0 6px;
+      font-size: 22px;
+      color: var(--emerald-deep);
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      margin: 0 0 22px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--emerald-deep);
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1.5px solid #d6c394;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--ink);
+      background: #ffffff;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--emerald-mid);
+    }
+
+    .preview-label-box {
+      background: var(--bg-batik);
+      border: 1.5px solid var(--gold-line);
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .preview-label-box small {
+      display: block;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .preview-label-box strong {
+      font-size: 17px;
+      color: var(--emerald-deep);
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1.5px solid var(--gold);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-mid));
+      color: #fffdf9;
+    }
+
+    .btn-outline {
+      background: var(--bg-batik);
+      color: var(--emerald-deep);
+    }
+
+    .btn-wa {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #25d366, #1ebe5d);
+      color: #ffffff;
+    }
+
+    .status {
+      margin-top: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--emerald-deep);
+      text-align: center;
+      min-height: 20px;
+    }
+
+    @media (max-width: 460px) {
+      .btn-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="kicker">Walimatul Khitan • Sean</div>
+    <h1>Pembuat Undangan Tamu</h1>
+    <p class="subtitle">Ketik nama tamu untuk membuat tautan personal dan pesan undangan siap kirim.</p>
+
+    <div class="form-group">
+      <label for="guestNameInput">Nama Tamu Undangan</label>
+      <input
+        id="guestNameInput"
+        type="text"
+        placeholder="Contoh: Bapak Ridwan"
+        oninput="generateInvite()"
+      />
+    </div>
+
+    <div class="preview-label-box">
+      <small id="previewHeader">Kepada Yth. Bapak/Ibu/Saudara/i:</small>
+      <strong id="previewName">Tamu Undangan</strong>
+    </div>
+
+    <div class="form-group">
+      <label for="generatedLink">Tautan Undangan Personal</label>
+      <input id="generatedLink" type="text" readonly />
+    </div>
+
+    <div class="form-group">
+      <label for="generatedMessage">Teks Pesan Siap Kirim (WhatsApp)</label>
+      <textarea id="generatedMessage" rows="9" readonly></textarea>
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn btn-outline" onclick="copyText('generatedLink', 'Tautan undangan berhasil disalin!')">
+        Salin Link Saja
+      </button>
+      <button type="button" class="btn btn-primary" onclick="copyText('generatedMessage', 'Pesan & link undangan berhasil disalin!')">
+        Salin Pesan + Link
+      </button>
+      <a id="waShareBtn" class="btn btn-wa" href="#" target="_blank" rel="noopener noreferrer">
+        Bagikan Langsung via WhatsApp
+      </a>
+    </div>
+
+    <div id="statusText" class="status"></div>
+  </div>
+
+  <script>
+    const BASE_INVITE_URL = "https://imediadigi.github.io/undangan-khitanan-sean/";
+
+    function generateInvite() {
+      const raw = document.getElementById("guestNameInput").value.trim();
+      const headerEl = document.getElementById("previewHeader");
+      const nameEl = document.getElementById("previewName");
+      const linkEl = document.getElementById("generatedLink");
+      const msgEl = document.getElementById("generatedMessage");
+      const waBtn = document.getElementById("waShareBtn");
+
+      const hasTitlePrefix = /^(bapak|ibu|sdr\.?|sdri\.?|kak|mas|mbak|kang|teh|keluarga|yth\.?)\b/i.test(raw);
+      headerEl.textContent = raw
+        ? (hasTitlePrefix ? "Kepada Yth." : "Kepada Yth. Bapak/Ibu/Saudara/i")
+        : "Kepada Yth. Bapak/Ibu/Saudara/i:";
+      nameEl.textContent = raw || "Tamu Undangan";
+
+      const personalUrl = raw
+        ? BASE_INVITE_URL + "?to=" + encodeURIComponent(raw)
+        : BASE_INVITE_URL;
+      linkEl.value = personalUrl;
+
+      const recipientLine = raw
+        ? (hasTitlePrefix ? "*" + raw + "*" : "Bapak/Ibu/Saudara/i *" + raw + "*")
+        : "Bapak/Ibu/Saudara/i";
+
+      const message = [
+        "Tanpa mengurangi rasa hormat, perkenankan kami mengundang " + recipientLine + " untuk menghadiri acara Walimatul Khitan putra kami tercinta:",
+        "",
+        "✨ *SEAN A. BHRETYADIKA PRATAMA* ✨",
+        "",
+        "📩 *Berikut link undangan kami*, untuk info lengkap dari acara bisa kunjungi :",
+        "",
+        personalUrl,
+        "",
+        "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir serta memberikan doa restu. 🙏🏻💐",
+        "",
+        "*Mohon maaf perihal undangan hanya dibagikan melalui pesan ini.*",
+        "",
+        "Terima kasih banyak atas perhatiannya. 🤲🏻✨"
+      ].join("\n");
+
+      msgEl.value = message;
+      waBtn.href = "https://wa.me/?text=" + encodeURIComponent(message);
+    }
+
+    function copyText(elementId, successMsg) {
+      const el = document.getElementById(elementId);
+      const statusEl = document.getElementById("statusText");
+      if (!el) return;
+
+      const text = el.value;
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        navigator.clipboard.writeText(text).then(() => {
+          statusEl.textContent = successMsg;
+        }).catch(() => {
+          fallbackCopy(el, statusEl, successMsg);
+        });
+      } else {
+        fallbackCopy(el, statusEl, successMsg);
+      }
+    }
+
+    function fallbackCopy(inputEl, statusEl, successMsg) {
+      inputEl.select();
+      inputEl.setSelectionRange(0, 99999);
+      try { document.execCommand("copy"); } catch (e) {}
+      statusEl.textContent = successMsg;
+    }
+
+    generateInvite();
+  </script>
+</body>
+</html>
